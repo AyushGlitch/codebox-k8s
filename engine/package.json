@@ -13,21 +13,20 @@
   "packageManager": "pnpm@10.13.1",
   "description": "",
   "dependencies": {
+    "@y/websocket-server": "^0.1.1",
     "chokidar": "^4.0.3",
+    "node-pty": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
-    "minio": "^8.0.5",
-    "node-pty": "^1.0.0",
     "socket.io": "^4.8.1",
-    "ws": "^8.18.3",
-    "y-websocket": "^3.0.0",
-    "yjs": "^13.6.27"
+    "ws": "^8.18.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.1.0",
+    "@types/ws": "^8.5.10",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   }

@@ -83,12 +83,16 @@ spec:
         ports:
         - containerPort: 3000
           name: http
+        - containerPort: 3001
+          name: yjs-ws
         
         env:
         - name: WORKSPACE_ID
           value: "example-workspace"
         - name: PORT
           value: "3000"
+        - name: YJS_PORT
+          value: "3001"
         - name: FAIL_ON_SCRIPT_ERROR
           value: "false"  # Set to "true" to fail container if run.sh fails
         
@@ -143,6 +147,10 @@ spec:
     targetPort: 3000
     protocol: TCP
     name: http
+  - port: 3001
+    targetPort: 3001
+    protocol: TCP
+    name: yjs-ws
   selector:
     app: codebox-engine
 
@@ -162,5 +170,10 @@ spec:
     nodePort: 30300
     protocol: TCP
     name: http
+  - port: 3001
+    targetPort: 3001
+    nodePort: 30301
+    protocol: TCP
+    name: yjs-ws
   selector:
     app: codebox-engine 
