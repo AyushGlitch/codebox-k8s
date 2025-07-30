@@ -11,6 +11,9 @@ importers:
       '@y/websocket-server':
         specifier: ^0.1.1
         version: 0.1.1(yjs@13.6.27)
+      chokidar:
+        specifier: ^4.0.3
+        version: 4.0.3
       cors:
         specifier: ^2.8.5
         version: 2.8.5
@@ -20,18 +23,15 @@ importers:
       express:
         specifier: ^5.1.0
         version: 5.1.0
+      node-pty:
+        specifier: ^1.0.0
+        version: 1.0.0
       socket.io:
         specifier: ^4.8.1
         version: 4.8.1
       ws:
         specifier: ^8.18.3
         version: 8.18.3
-      y-websocket:
-        specifier: ^3.0.0
-        version: 3.0.0(yjs@13.6.27)
-      yjs:
-        specifier: ^13.6.27
-        version: 13.6.27
     devDependencies:
       '@types/cors':
         specifier: ^2.8.19
@@ -129,19 +129,19 @@ packages:
     resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/@types/ws/-/ws-8.18.1.tgz}
 
   '@y/websocket-server@0.1.1':
-    resolution: {integrity: sha512-pPtXm5Ceqs4orhXXHwm2I+u1mKNBDNzlrwNiI7OMwM7PlVS4WCMpiIuSB8WsYeSuISbvpXPNvaj6H1MoQBbE+g==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/@y/websocket-server/-/websocket-server-0.1.1.tgz}
+    resolution: {integrity: sha512-pPtXm5Ceqs4orhXXHwm2I+u1mKNBDNzlrwNiI7OMwM7PlVS4WCMpiIuSB8WsYeSuISbvpXPNvaj6H1MoQBbE+g==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/@y/websocket-server/-/websocket-server-0.1.1.tgz}
     engines: {node: '>=16.0.0', npm: '>=8.0.0'}
     hasBin: true
     peerDependencies:
       yjs: ^13.5.6
 
   abstract-leveldown@6.2.3:
-    resolution: {integrity: sha512-BsLm5vFMRUrrLeCcRc+G0t2qOaTzpoJQLOubq2XM72eNpjF5UdU5o/5NvlNhx95XHcAvcl8OMXr4mlg/fRgUXQ==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/abstract-leveldown/-/abstract-leveldown-6.2.3.tgz}
+    resolution: {integrity: sha512-BsLm5vFMRUrrLeCcRc+G0t2qOaTzpoJQLOubq2XM72eNpjF5UdU5o/5NvlNhx95XHcAvcl8OMXr4mlg/fRgUXQ==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/abstract-leveldown/-/abstract-leveldown-6.2.3.tgz}
     engines: {node: '>=6'}
     deprecated: Superseded by abstract-level (https://github.com/Level/community#faq)
 
   abstract-leveldown@6.3.0:
-    resolution: {integrity: sha512-TU5nlYgta8YrBMNpc9FwQzRbiXsj49gsALsXadbGHt9CROPzX5fB0rWDR5mtdpOOKa5XqRFpbj1QroPAoPzVjQ==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/abstract-leveldown/-/abstract-leveldown-6.3.0.tgz}
+    resolution: {integrity: sha512-TU5nlYgta8YrBMNpc9FwQzRbiXsj49gsALsXadbGHt9CROPzX5fB0rWDR5mtdpOOKa5XqRFpbj1QroPAoPzVjQ==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/abstract-leveldown/-/abstract-leveldown-6.3.0.tgz}
     engines: {node: '>=6'}
     deprecated: Superseded by abstract-level (https://github.com/Level/community#faq)
 
@@ -170,13 +170,13 @@ packages:
     resolution: {integrity: sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/arg/-/arg-4.1.3.tgz}
 
   async-limiter@1.0.1:
-    resolution: {integrity: sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/async-limiter/-/async-limiter-1.0.1.tgz}
+    resolution: {integrity: sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/async-limiter/-/async-limiter-1.0.1.tgz}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/balanced-match/-/balanced-match-1.0.2.tgz}
 
   base64-js@1.5.1:
-    resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/base64-js/-/base64-js-1.5.1.tgz}
+    resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/base64-js/-/base64-js-1.5.1.tgz}
 
   base64id@2.0.0:
     resolution: {integrity: sha512-lGe34o6EHj9y3Kts9R4ZYs/Gr+6N7MCaMlIFA3F1R2O5/m7K06AxfSeO5530PEERE6/WyEg3lsuyw4GHlPZHog==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/base64id/-/base64id-2.0.0.tgz}
@@ -201,7 +201,7 @@ packages:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/buffer-from/-/buffer-from-1.1.2.tgz}
 
   buffer@5.7.1:
-    resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/buffer/-/buffer-5.7.1.tgz}
+    resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/buffer/-/buffer-5.7.1.tgz}
 
   bytes@3.1.2:
     resolution: {integrity: sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/bytes/-/bytes-3.1.2.tgz}
@@ -216,8 +216,12 @@ packages:
     engines: {node: '>= 0.4'}
 
   chokidar@3.6.0:
-    resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/chokidar/-/chokidar-3.6.0.tgz}
+    resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/chokidar/-/chokidar-3.6.0.tgz}
     engines: {node: '>= 8.10.0'}
+
+  chokidar@4.0.3:
+    resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/chokidar/-/chokidar-4.0.3.tgz}
+    engines: {node: '>= 14.16.0'}
 
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/concat-map/-/concat-map-0.0.1.tgz}
@@ -264,7 +268,7 @@ packages:
         optional: true
 
   deferred-leveldown@5.3.0:
-    resolution: {integrity: sha512-a59VOT+oDy7vtAbLRCZwWgxu2BaCfd5Hk7wxJd48ei7I+nsg8Orlb9CLG0PMZienk9BSUKgeAqkO2+Lw+1+Ukw==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/deferred-leveldown/-/deferred-leveldown-5.3.0.tgz}
+    resolution: {integrity: sha512-a59VOT+oDy7vtAbLRCZwWgxu2BaCfd5Hk7wxJd48ei7I+nsg8Orlb9CLG0PMZienk9BSUKgeAqkO2+Lw+1+Ukw==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/deferred-leveldown/-/deferred-leveldown-5.3.0.tgz}
     engines: {node: '>=6'}
     deprecated: Superseded by abstract-level (https://github.com/Level/community#faq)
 
@@ -295,7 +299,7 @@ packages:
     engines: {node: '>= 0.8'}
 
   encoding-down@6.3.0:
-    resolution: {integrity: sha512-QKrV0iKR6MZVJV08QY0wp1e7vF6QbhnbQhb07bwpEyuz4uZiZgPlEGdkCROuFkUwdxlFaiPIhjyarH1ee/3vhw==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/encoding-down/-/encoding-down-6.3.0.tgz}
+    resolution: {integrity: sha512-QKrV0iKR6MZVJV08QY0wp1e7vF6QbhnbQhb07bwpEyuz4uZiZgPlEGdkCROuFkUwdxlFaiPIhjyarH1ee/3vhw==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/encoding-down/-/encoding-down-6.3.0.tgz}
     engines: {node: '>=6'}
     deprecated: Superseded by abstract-level (https://github.com/Level/community#faq)
 
@@ -308,7 +312,7 @@ packages:
     engines: {node: '>=10.2.0'}
 
   errno@0.1.8:
-    resolution: {integrity: sha512-dJ6oBr5SQ1VSd9qkk7ByRgb/1SH4JZjCHSW/mr63/QcXO9zLVxvJ6Oy13nio03rxpSnVDDjFor75SjVeZWPW/A==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/errno/-/errno-0.1.8.tgz}
+    resolution: {integrity: sha512-dJ6oBr5SQ1VSd9qkk7ByRgb/1SH4JZjCHSW/mr63/QcXO9zLVxvJ6Oy13nio03rxpSnVDDjFor75SjVeZWPW/A==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/errno/-/errno-0.1.8.tgz}
     hasBin: true
 
   es-define-property@1.0.1:
@@ -398,10 +402,10 @@ packages:
     engines: {node: '>=0.10.0'}
 
   ieee754@1.2.1:
-    resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/ieee754/-/ieee754-1.2.1.tgz}
+    resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/ieee754/-/ieee754-1.2.1.tgz}
 
   immediate@3.3.0:
-    resolution: {integrity: sha512-HR7EVodfFUdQCTIeySw+WDRFJlPcLOJbXfwwZ7Oom6tjsvZ3bOkCDJHehQC3nxJrv7+f9XecwazynjU8e4Vw3Q==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/immediate/-/immediate-3.3.0.tgz}
+    resolution: {integrity: sha512-HR7EVodfFUdQCTIeySw+WDRFJlPcLOJbXfwwZ7Oom6tjsvZ3bOkCDJHehQC3nxJrv7+f9XecwazynjU8e4Vw3Q==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/immediate/-/immediate-3.3.0.tgz}
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/inflight/-/inflight-1.0.6.tgz}
@@ -441,48 +445,48 @@ packages:
     resolution: {integrity: sha512-PIeMbHqMt4DnUP3MA/Flc0HElYjMXArsw1qwJZcm9sqR8mq3l8NYizFMty0pWwE/tzIGH3EKK5+jes5mAr85yw==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/isomorphic.js/-/isomorphic.js-0.2.5.tgz}
 
   level-codec@9.0.2:
-    resolution: {integrity: sha512-UyIwNb1lJBChJnGfjmO0OR+ezh2iVu1Kas3nvBS/BzGnx79dv6g7unpKIDNPMhfdTEGoc7mC8uAu51XEtX+FHQ==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/level-codec/-/level-codec-9.0.2.tgz}
+    resolution: {integrity: sha512-UyIwNb1lJBChJnGfjmO0OR+ezh2iVu1Kas3nvBS/BzGnx79dv6g7unpKIDNPMhfdTEGoc7mC8uAu51XEtX+FHQ==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/level-codec/-/level-codec-9.0.2.tgz}
     engines: {node: '>=6'}
     deprecated: Superseded by level-transcoder (https://github.com/Level/community#faq)
 
   level-concat-iterator@2.0.1:
-    resolution: {integrity: sha512-OTKKOqeav2QWcERMJR7IS9CUo1sHnke2C0gkSmcR7QuEtFNLLzHQAvnMw8ykvEcv0Qtkg0p7FOwP1v9e5Smdcw==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/level-concat-iterator/-/level-concat-iterator-2.0.1.tgz}
+    resolution: {integrity: sha512-OTKKOqeav2QWcERMJR7IS9CUo1sHnke2C0gkSmcR7QuEtFNLLzHQAvnMw8ykvEcv0Qtkg0p7FOwP1v9e5Smdcw==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/level-concat-iterator/-/level-concat-iterator-2.0.1.tgz}
     engines: {node: '>=6'}
     deprecated: Superseded by abstract-level (https://github.com/Level/community#faq)
 
   level-errors@2.0.1:
-    resolution: {integrity: sha512-UVprBJXite4gPS+3VznfgDSU8PTRuVX0NXwoWW50KLxd2yw4Y1t2JUR5In1itQnudZqRMT9DlAM3Q//9NCjCFw==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/level-errors/-/level-errors-2.0.1.tgz}
+    resolution: {integrity: sha512-UVprBJXite4gPS+3VznfgDSU8PTRuVX0NXwoWW50KLxd2yw4Y1t2JUR5In1itQnudZqRMT9DlAM3Q//9NCjCFw==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/level-errors/-/level-errors-2.0.1.tgz}
     engines: {node: '>=6'}
     deprecated: Superseded by abstract-level (https://github.com/Level/community#faq)
 
   level-iterator-stream@4.0.2:
-    resolution: {integrity: sha512-ZSthfEqzGSOMWoUGhTXdX9jv26d32XJuHz/5YnuHZzH6wldfWMOVwI9TBtKcya4BKTyTt3XVA0A3cF3q5CY30Q==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/level-iterator-stream/-/level-iterator-stream-4.0.2.tgz}
+    resolution: {integrity: sha512-ZSthfEqzGSOMWoUGhTXdX9jv26d32XJuHz/5YnuHZzH6wldfWMOVwI9TBtKcya4BKTyTt3XVA0A3cF3q5CY30Q==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/level-iterator-stream/-/level-iterator-stream-4.0.2.tgz}
     engines: {node: '>=6'}
 
   level-js@5.0.2:
-    resolution: {integrity: sha512-SnBIDo2pdO5VXh02ZmtAyPP6/+6YTJg2ibLtl9C34pWvmtMEmRTWpra+qO/hifkUtBTOtfx6S9vLDjBsBK4gRg==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/level-js/-/level-js-5.0.2.tgz}
+    resolution: {integrity: sha512-SnBIDo2pdO5VXh02ZmtAyPP6/+6YTJg2ibLtl9C34pWvmtMEmRTWpra+qO/hifkUtBTOtfx6S9vLDjBsBK4gRg==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/level-js/-/level-js-5.0.2.tgz}
     deprecated: Superseded by browser-level (https://github.com/Level/community#faq)
 
   level-packager@5.1.1:
-    resolution: {integrity: sha512-HMwMaQPlTC1IlcwT3+swhqf/NUO+ZhXVz6TY1zZIIZlIR0YSn8GtAAWmIvKjNY16ZkEg/JcpAuQskxsXqC0yOQ==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/level-packager/-/level-packager-5.1.1.tgz}
+    resolution: {integrity: sha512-HMwMaQPlTC1IlcwT3+swhqf/NUO+ZhXVz6TY1zZIIZlIR0YSn8GtAAWmIvKjNY16ZkEg/JcpAuQskxsXqC0yOQ==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/level-packager/-/level-packager-5.1.1.tgz}
     engines: {node: '>=6'}
     deprecated: Superseded by abstract-level (https://github.com/Level/community#faq)
 
   level-supports@1.0.1:
-    resolution: {integrity: sha512-rXM7GYnW8gsl1vedTJIbzOrRv85c/2uCMpiiCzO2fndd06U/kUXEEU9evYn4zFggBOg36IsBW8LzqIpETwwQzg==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/level-supports/-/level-supports-1.0.1.tgz}
+    resolution: {integrity: sha512-rXM7GYnW8gsl1vedTJIbzOrRv85c/2uCMpiiCzO2fndd06U/kUXEEU9evYn4zFggBOg36IsBW8LzqIpETwwQzg==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/level-supports/-/level-supports-1.0.1.tgz}
     engines: {node: '>=6'}
 
   level@6.0.1:
-    resolution: {integrity: sha512-psRSqJZCsC/irNhfHzrVZbmPYXDcEYhA5TVNwr+V92jF44rbf86hqGp8fiT702FyiArScYIlPSBTDUASCVNSpw==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/level/-/level-6.0.1.tgz}
+    resolution: {integrity: sha512-psRSqJZCsC/irNhfHzrVZbmPYXDcEYhA5TVNwr+V92jF44rbf86hqGp8fiT702FyiArScYIlPSBTDUASCVNSpw==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/level/-/level-6.0.1.tgz}
     engines: {node: '>=8.6.0'}
 
   leveldown@5.6.0:
-    resolution: {integrity: sha512-iB8O/7Db9lPaITU1aA2txU/cBEXAt4vWwKQRrrWuS6XDgbP4QZGj9BL2aNbwb002atoQ/lIotJkfyzz+ygQnUQ==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/leveldown/-/leveldown-5.6.0.tgz}
+    resolution: {integrity: sha512-iB8O/7Db9lPaITU1aA2txU/cBEXAt4vWwKQRrrWuS6XDgbP4QZGj9BL2aNbwb002atoQ/lIotJkfyzz+ygQnUQ==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/leveldown/-/leveldown-5.6.0.tgz}
     engines: {node: '>=8.6.0'}
     deprecated: Superseded by classic-level (https://github.com/Level/community#faq)
 
   levelup@4.4.0:
-    resolution: {integrity: sha512-94++VFO3qN95cM/d6eBXvd894oJE0w3cInq9USsyQzzoJxmiYzPAocNcuGCPGGjoXqDVJcr3C1jzt1TSjyaiLQ==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/levelup/-/levelup-4.4.0.tgz}
+    resolution: {integrity: sha512-94++VFO3qN95cM/d6eBXvd894oJE0w3cInq9USsyQzzoJxmiYzPAocNcuGCPGGjoXqDVJcr3C1jzt1TSjyaiLQ==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/levelup/-/levelup-4.4.0.tgz}
     engines: {node: '>=6'}
     deprecated: Superseded by abstract-level (https://github.com/Level/community#faq)
 
@@ -492,7 +496,7 @@ packages:
     hasBin: true
 
   ltgt@2.2.1:
-    resolution: {integrity: sha512-AI2r85+4MquTw9ZYqabu4nMwy9Oftlfa/e/52t9IjtfG+mGBbTNdAoZ3RQKLHR6r0wQnwZnPIEh/Ya6XTWAKNA==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/ltgt/-/ltgt-2.2.1.tgz}
+    resolution: {integrity: sha512-AI2r85+4MquTw9ZYqabu4nMwy9Oftlfa/e/52t9IjtfG+mGBbTNdAoZ3RQKLHR6r0wQnwZnPIEh/Ya6XTWAKNA==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/ltgt/-/ltgt-2.2.1.tgz}
 
   make-error@1.3.6:
     resolution: {integrity: sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/make-error/-/make-error-1.3.6.tgz}
@@ -539,8 +543,11 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/ms/-/ms-2.1.3.tgz}
 
+  nan@2.23.0:
+    resolution: {integrity: sha512-1UxuyYGdoQHcGg87Lkqm3FzefucTa0NAiOcuRsDmysep3c1LVCRK2krrUDafMWtjSG04htvAmvg96+SDknOmgQ==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/nan/-/nan-2.23.0.tgz}
+
   napi-macros@2.0.0:
-    resolution: {integrity: sha512-A0xLykHtARfueITVDernsAWdtIMbOJgKgcluwENp3AlsKN/PloyO10HtmoqnFAQAcxPkgZN7wdfPfEd0zNGxbg==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/napi-macros/-/napi-macros-2.0.0.tgz}
+    resolution: {integrity: sha512-A0xLykHtARfueITVDernsAWdtIMbOJgKgcluwENp3AlsKN/PloyO10HtmoqnFAQAcxPkgZN7wdfPfEd0zNGxbg==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/napi-macros/-/napi-macros-2.0.0.tgz}
 
   negotiator@0.6.3:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/negotiator/-/negotiator-0.6.3.tgz}
@@ -551,8 +558,11 @@ packages:
     engines: {node: '>= 0.6'}
 
   node-gyp-build@4.1.1:
-    resolution: {integrity: sha512-dSq1xmcPDKPZ2EED2S6zw/b9NKsqzXRE6dVr8TVQnI3FJOTteUMuqF3Qqs6LZg+mLGYJWqQzMbIjMtJqTv87nQ==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/node-gyp-build/-/node-gyp-build-4.1.1.tgz}
+    resolution: {integrity: sha512-dSq1xmcPDKPZ2EED2S6zw/b9NKsqzXRE6dVr8TVQnI3FJOTteUMuqF3Qqs6LZg+mLGYJWqQzMbIjMtJqTv87nQ==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/node-gyp-build/-/node-gyp-build-4.1.1.tgz}
     hasBin: true
+
+  node-pty@1.0.0:
+    resolution: {integrity: sha512-wtBMWWS7dFZm/VgqElrTvtfMq4GzJ6+edFI0Y0zyzygUSZMgZdraDUMUhCIvkjhJjme15qWmbyJbtAx4ot4uZA==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/node-pty/-/node-pty-1.0.0.tgz}
 
   normalize-path@3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/normalize-path/-/normalize-path-3.0.0.tgz}
@@ -597,7 +607,7 @@ packages:
     engines: {node: '>= 0.10'}
 
   prr@1.0.1:
-    resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/prr/-/prr-1.0.1.tgz}
+    resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/prr/-/prr-1.0.1.tgz}
 
   qs@6.14.0:
     resolution: {integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/qs/-/qs-6.14.0.tgz}
@@ -612,12 +622,16 @@ packages:
     engines: {node: '>= 0.8'}
 
   readable-stream@3.6.2:
-    resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/readable-stream/-/readable-stream-3.6.2.tgz}
+    resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/readable-stream/-/readable-stream-3.6.2.tgz}
     engines: {node: '>= 6'}
 
   readdirp@3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/readdirp/-/readdirp-3.6.0.tgz}
     engines: {node: '>=8.10.0'}
+
+  readdirp@4.1.2:
+    resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/readdirp/-/readdirp-4.1.2.tgz}
+    engines: {node: '>= 14.18.0'}
 
   resolve@1.22.10:
     resolution: {integrity: sha512-NPRy+/ncIMeDlTAsuqwKIiferiawhefFJtkNSW0qZJEqMEb+qBt/77B/jGeeek+F0uOeN05CDa6HXbbIgtVX4w==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/resolve/-/resolve-1.22.10.tgz}
@@ -693,7 +707,7 @@ packages:
     engines: {node: '>= 0.8'}
 
   string_decoder@1.3.0:
-    resolution: {integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/string_decoder/-/string_decoder-1.3.0.tgz}
+    resolution: {integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/string_decoder/-/string_decoder-1.3.0.tgz}
 
   strip-bom@3.0.0:
     resolution: {integrity: sha512-vavAMRXOgBVNF6nyEEmL3DBK19iRpDcoIwW+swQ+CbGiu7lju6t+JklA1MHweoWtadgt4ISVUsXLyDq34ddcwA==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/strip-bom/-/strip-bom-3.0.0.tgz}
@@ -764,7 +778,7 @@ packages:
     engines: {node: '>= 0.8'}
 
   util-deprecate@1.0.2:
-    resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==, tarball: https://registry.npmjs.intuit.com:443/artifactory/api/npm/npm-intuit/util-deprecate/-/util-deprecate-1.0.2.tgz}
+    resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/util-deprecate/-/util-deprecate-1.0.2.tgz}
 
   v8-compile-cache-lib@3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/v8-compile-cache-lib/-/v8-compile-cache-lib-3.0.1.tgz}
@@ -825,12 +839,6 @@ packages:
     engines: {node: '>=16.0.0', npm: '>=8.0.0'}
     peerDependencies:
       yjs: ^13.0.0
-
-  y-websocket@3.0.0:
-    resolution: {integrity: sha512-mUHy7AzkOZ834T/7piqtlA8Yk6AchqKqcrCXjKW8J1w2lPtRDjz8W5/CvXz9higKAHgKRKqpI3T33YkRFLkPtg==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/y-websocket/-/y-websocket-3.0.0.tgz}
-    engines: {node: '>=16.0.0', npm: '>=8.0.0'}
-    peerDependencies:
-      yjs: ^13.5.6
 
   yjs@13.6.27:
     resolution: {integrity: sha512-OIDwaflOaq4wC6YlPBy2L6ceKeKuF7DeTxx+jPzv1FHn9tCZ0ZwSRnUBxD05E3yed46fv/FWJbvR+Ud7x0L7zw==, tarball: https://registry.npmjs.intuit.com/artifactory/api/npm/npm-intuit/yjs/-/yjs-13.6.27.tgz}
@@ -1041,6 +1049,10 @@ snapshots:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.3
+
+  chokidar@4.0.3:
+    dependencies:
+      readdirp: 4.1.2
 
   concat-map@0.0.1: {}
 
@@ -1381,6 +1393,8 @@ snapshots:
 
   ms@2.1.3: {}
 
+  nan@2.23.0: {}
+
   napi-macros@2.0.0:
     optional: true
 
@@ -1390,6 +1404,10 @@ snapshots:
 
   node-gyp-build@4.1.1:
     optional: true
+
+  node-pty@1.0.0:
+    dependencies:
+      nan: 2.23.0
 
   normalize-path@3.0.0: {}
 
@@ -1446,6 +1464,8 @@ snapshots:
   readdirp@3.6.0:
     dependencies:
       picomatch: 2.3.1
+
+  readdirp@4.1.2: {}
 
   resolve@1.22.10:
     dependencies:
@@ -1671,12 +1691,6 @@ snapshots:
   y-protocols@1.0.6(yjs@13.6.27):
     dependencies:
       lib0: 0.2.114
-      yjs: 13.6.27
-
-  y-websocket@3.0.0(yjs@13.6.27):
-    dependencies:
-      lib0: 0.2.114
-      y-protocols: 1.0.6(yjs@13.6.27)
       yjs: 13.6.27
 
   yjs@13.6.27:

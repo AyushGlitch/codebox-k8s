@@ -9,6 +9,7 @@ import { Server as SocketIOServer } from 'socket.io';
 import { createServer } from 'http';
 import { WebSocketServer } from 'ws';
 import { setupWSConnection } from '@y/websocket-server/dist/src/utils';
+import { initWS } from './ws';
 
 dotenv.config();
 
@@ -129,21 +130,7 @@ async function startServer(): Promise<void> {
       await runWorkspaceScript();
     }
     
-    // Start Express HTTP server with Socket.io
-    const io = new SocketIOServer(httpServer, {
-      cors: {
-        origin: "*",
-        methods: ["GET", "POST"]
-      }
-    });
-
-    io.on('connection', (socket) => {
-      console.log('New Socket.io client connected:', socket.id);
-      
-      socket.on('disconnect', () => {
-        console.log('Socket.io client disconnected:', socket.id);
-      });
-    });
+    initWS(httpServer);
 
     httpServer.listen(PORT, () => {
       console.log(`Express HTTP + Socket.io server running on port ${PORT}`);
