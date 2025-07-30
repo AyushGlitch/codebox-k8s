@@ -1,0 +1,166 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codebox-engine
+  namespace: default
+  labels:
+    app: codebox-engine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: codebox-engine
+  template:
+    metadata:
+      labels:
+        app: codebox-engine
+    spec:
+      # Init container using official MinIO client
+      initContainers:
+      - name: workspace-initializer
+        image: minio/mc:latest  # Official MinIO client
+        imagePullPolicy: IfNotPresent
+        command:
+        - /bin/sh
+        - -c
+        - |
+          set -e
+          echo "🚀 Initializing workspace: $WORKSPACE_ID"
+          
+          # Configure MinIO client
+          mc alias set minio http://$MINIO_ENDPOINT:$MINIO_PORT $MINIO_ACCESS_KEY $MINIO_SECRET_KEY
+          
+          # Check if bucket exists
+          if ! mc ls minio/codebox >/dev/null 2>&1; then
+            echo "⚠️  Codebox bucket not found, skipping content fetch"
+            exit 0
+          fi
+          
+          # Create workspace directory
+          mkdir -p /workspace
+          
+          # Copy content from MinIO
+          echo "📦 Copying content from MinIO..."
+          if mc ls minio/codebox/$WORKSPACE_ID/ >/dev/null 2>&1; then
+            mc cp --recursive minio/codebox/$WORKSPACE_ID/ /workspace/
+            echo "✅ Workspace $WORKSPACE_ID initialized successfully"
+          else
+            echo "⚠️  No content found for workspace $WORKSPACE_ID"
+          fi
+        
+        # Environment variables
+        env:
+        - name: MINIO_ENDPOINT
+          value: "my-minio"
+        - name: MINIO_PORT
+          value: "9000"
+        - name: MINIO_ACCESS_KEY
+          value: "username"
+        - name: MINIO_SECRET_KEY
+          value: "password"
+        - name: WORKSPACE_ID
+          value: "example-workspace"
+        
+        # Volume mount for shared workspace
+        volumeMounts:
+        - name: workspace
+          mountPath: /workspace
+        
+        # Resource limits for init container (much smaller)
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "25m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+      
+      # Main application container
+      containers:
+      - name: engine
+        image: codebox-engine:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+          name: http
+        
+        env:
+        - name: WORKSPACE_ID
+          value: "example-workspace"
+        - name: PORT
+          value: "3000"
+        - name: FAIL_ON_SCRIPT_ERROR
+          value: "false"  # Set to "true" to fail container if run.sh fails
+        
+        # Health checks
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          successThreshold: 1
+          failureThreshold: 3
+        
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        
+        volumeMounts:
+        - name: workspace
+          mountPath: /app/workspace
+      
+      volumes:
+      - name: workspace
+        emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: codebox-engine-service
+  namespace: default
+  labels:
+    app: codebox-engine
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app: codebox-engine
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: codebox-engine-nodeport
+  namespace: default
+  labels:
+    app: codebox-engine
+spec:
+  type: NodePort
+  ports:
+  - port: 3000
+    targetPort: 3000
+    nodePort: 30300
+    protocol: TCP
+    name: http
+  selector:
+    app: codebox-engine 
