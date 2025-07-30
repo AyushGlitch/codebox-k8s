@@ -1,0 +1,49 @@
+# Executable files and compiled binaries
+# These are the files generated when you build your project.
+# The executable name will typically be the name of your module or main package.
+*.exe
+*.bin
+*.out
+/bin/
+
+# IDE and Editor-specific files
+# These files store project-specific settings and state for your IDE.
+# They are not part of the source code and shouldn't be shared.
+.idea/                # IntelliJ IDEA / GoLand project files
+.vscode/              # Visual Studio Code settings
+.DS_Store             # macOS-specific file
+*.swp                 # Vim swap files
+*~                    # Emacs backup files
+
+# Dependencies and build cache
+# Go manages dependencies in the `pkg/mod` and `vendor` directories.
+# The Go build cache is located in a directory specific to the OS.
+# The vendor directory is usually handled by `go mod vendor` and may or may not be checked in.
+# It's a common practice to not commit vendor files unless you have a specific reason to.
+vendor/               # Go modules vendor directory
+go.sum                # go.sum is usually committed, but if you have a specific reason not to, you can ignore it.
+go.mod                # go.mod should be committed.
+pkg/                  # Go build cache and module cache
+
+# Environment variables and sensitive data
+# These files often contain API keys, database passwords, or other secrets.
+# They should never be committed to a public repository.
+.env                  # Common for environment variables
+.env.local            # Local environment variables
+config.json           # If this file contains sensitive data
+
+# Build-related directories and temporary files
+# Directories that are used for building or testing
+/build/
+/dist/
+/release/
+/tmp/
+
+# Log files and database files
+# These are generated during runtime and are not part of the source.
+*.log
+*.sqlite
+*.db
+
+# OS-specific files
+Thumbs.db             # Windows-specific thumbnail cache

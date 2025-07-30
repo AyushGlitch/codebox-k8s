@@ -22,7 +22,7 @@ const execAsync = promisify(exec);
 app.use(cors());
 app.use(express.json());
 
-// Health check route
+// Health check route - handle both prefixed and non-prefixed
 app.get('/health', (req, res) => {
   const workspaceExists = fs.existsSync('./workspace');
   const runScriptExists = fs.existsSync('./workspace/run.sh');
@@ -36,8 +36,22 @@ app.get('/health', (req, res) => {
   });
 });
 
-// API endpoint to get workspace files
-app.get('/get-workspace-files', (req, res) => {
+// Health check route with prefix for ingress routing
+app.get('/pod/server/health', (req, res) => {
+  const workspaceExists = fs.existsSync('./workspace');
+  const runScriptExists = fs.existsSync('./workspace/run.sh');
+  
+  res.json({ 
+    status: 'healthy', 
+    workspaceId: process.env.WORKSPACE_ID,
+    workspaceInitialized: workspaceExists,
+    runScriptAvailable: runScriptExists,
+    timestamp: new Date().toISOString() 
+  });
+});
+
+// API endpoint to get workspace files with prefix for ingress routing
+app.get('/pod/server/get-workspace-files', (req, res) => {
     try {
         const workspaceDir = './workspace';
         const files = fs.readdirSync(workspaceDir);
