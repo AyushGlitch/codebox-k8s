@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useYRoom, FileItem } from '../hooks/useYRoom';
+import { useYWorkspace, type FileItem } from '../hooks/useYWorkspace';
+import { useSocket } from '../hooks/useSocket';
 import SharedMonaco from './SharedMonaco';
 import FileManager from './FileManager';
 import UserPresence from './UserPresence';
+import { TerminalComp } from './Terminal';
 import { deduplicateFiles } from '../utils/deduplicate';
 
 export default function Workspace() {
   const { roomId } = useParams<{ roomId: string }>();
-  const { doc, provider, isConnected } = useYRoom(roomId || 'default');
+  const workspaceId = roomId || 'default';
+  const { doc, provider, isConnected } = useYWorkspace(workspaceId);
+  const socket = useSocket(workspaceId);
   const [activeFileId, setActiveFileId] = useState('index.ts');
 
   const handleCleanupDuplicates = () => {
@@ -26,7 +30,7 @@ export default function Workspace() {
     );
   }
 
-  const activeFile = doc.getArray<FileItem>('files').toArray().find((f: FileItem) => f.id === activeFileId);
+  const activeFile = doc.getArray<FileItem>('fileList').toArray().find((f: FileItem) => f.id === activeFileId);
 
   return (
     <div className="h-screen flex flex-col">
@@ -58,11 +62,11 @@ export default function Workspace() {
               ydoc={doc}
               fileId={activeFileId}
               provider={provider}
-              language={activeFile?.language}
+              language={activeFile?.extension?.replace('.', '')}
             />
           </div>
 
-          <TerminalComp socket={socket} />
+          {socket && <TerminalComp socket={socket} />}
         </div>
       </div>
     </div>

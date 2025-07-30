@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Socket } from 'socket.io-client';
-import { Terminal } from 'xterm';
-import { FitAddon } from 'xterm-addon-fit';
-import 'xterm/css/xterm.css'; // Ensure to import xterm CSS
+import { Terminal } from '@xterm/xterm';
+import { FitAddon } from '@xterm/addon-fit';
+import '@xterm/xterm/css/xterm.css';
 
 const fitAddon = new FitAddon();
 
@@ -49,7 +49,7 @@ export const TerminalComp: React.FC<TerminalCompProps> = ({ socket }) => {
         socket.emit('requestTerminal');
         socket.on('terminal', terminalHandler);
 
-        term.onData((data) => {
+        term.onData((data: string) => {
             socket.emit('terminalData', { data });
         });
 

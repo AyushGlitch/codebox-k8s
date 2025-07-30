@@ -1,8 +1,7 @@
 import { Server as SocketIOServer, Socket } from "socket.io";
 import { TerminalManager } from "./pty";
-import { Server as HttpServer } from "http";
+import { Server as HttpServer } from "http";
 import { fetchDir, fetchFileContent, saveFile } from "./fs";
-import { fetchMinioFolder, saveToMinio } from "./minio";
 import chokidar from "chokidar";
 import dotenv from "dotenv";
 import path from "path";
@@ -26,47 +25,89 @@ export const initWS = (httpServer: HttpServer) => {
 
         initHandlers(socket, workspaceId);
 
-        chokidar.watch(`./workspace`).on('all', async (event: string, path: string) => {
-            const rootContent = await fetchDir(workspaceId);
-            socket.emit('loaded-files', rootContent);
+        // Watch for file changes in workspace directory
+        const watcher = chokidar.watch(`./workspace`, {
+            ignored: /(^|[\/\\])\../, // ignore dotfiles
+            persistent: true
+        });
+
+        watcher.on('all', async (event: string, filePath: string) => {
+            try {
+                console.log(`File ${event}: ${filePath}`);
+                const rootContent = await fetchDir(`./workspace`, "");
+                socket.emit('loaded-files', rootContent);
+                
+                // Notify about file system changes for Y.js sync
+                socket.emit('file-system-change', {
+                    event,
+                    path: filePath,
+                    workspaceId
+                });
+            } catch (error) {
+                console.error('Error watching files:', error);
+            }
         });
 
         socket.on('disconnect', () => {
             console.log('Socket.io client disconnected:', socket.id);
+            watcher.close();
         });
     })
 }
 
 function initHandlers(socket: Socket, workspaceId: string) {
-    socket.on('disconnet', () => {
+    socket.on('disconnect', () => {
         console.log('Socket.io client disconnected:', socket.id);
     })
 
     socket.on('fetchContent', async ({path}: {path: string}) => {
-        const content = await fetchFileContent(path);
-        socket.emit('file-content', content);
+        try {
+            const content = await fetchFileContent(path);
+            socket.emit('file-content', content);
+        } catch (error) {
+            console.error('Error fetching file content:', error);
+            socket.emit('file-error', { path, error: 'Failed to fetch file content' });
+        }
     })
 
     socket.on('saveFile', async ({path, content}: {path: string, content: string}) => {
-        await saveFile(path, content);
-        socket.emit('file-saved', path);
+        try {
+            await saveFile(path, content);
+            socket.emit('file-saved', path);
+        } catch (error) {
+            console.error('Error saving file:', error);
+            socket.emit('file-error', { path, error: 'Failed to save file' });
+        }
     })
 
     socket.on("updateContent", async ({ path: filePath, content }: { path: string, content: string }) => {
-        const fullPath =  `./workspace/${filePath}`;
-        await saveFile(fullPath, content);
-        await saveToMinio(`codebox/${replId}`, filePath, content);
+        try {
+            const fullPath = `./workspace/${filePath}`;
+            await saveFile(fullPath, content);
+            console.log(`File updated: ${fullPath}`);
+        } catch (error) {
+            console.error('Error updating file:', error);
+        }
     });
 
     socket.on("requestTerminal", async () => {
-        terminalManager.createPty(socket.id, replId, (data, id) => {
-            socket.emit('terminal', {
-                data: Buffer.from(data,"utf-8")
+        try {
+            terminalManager.createPty(socket.id, workspaceId, (data, id) => {
+                socket.emit('terminal', {
+                    data: Buffer.from(data, "utf-8")
+                });
             });
-        });
+            console.log(`Terminal created for socket: ${socket.id}`);
+        } catch (error) {
+            console.error('Error creating terminal:', error);
+        }
     });
     
-    socket.on("terminalData", async ({ data }: { data: string, terminalId: number }) => {
-        terminalManager.write(socket.id, data);
+    socket.on("terminalData", async ({ data }: { data: string }) => {
+        try {
+            terminalManager.write(socket.id, data);
+        } catch (error) {
+            console.error('Error writing to terminal:', error);
+        }
     });
 }

@@ -1,6 +1,4 @@
 import Workspace from "@/components/Workspace";
-import { useSocket } from "@/hooks/useSocket";
-import { useYWorkspace, type FileItem } from "@/hooks/useYWorkspace";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { ImSpinner10 } from "react-icons/im";
@@ -8,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 
 
 
-export const Coding = () => {
+const Coding = () => {
     const [workspaceCreated, setWorkspaceCreated] = useState(false);
     const [searchParams] = useSearchParams();
     const workspaceId = searchParams.get('workspaceId');
@@ -42,3 +40,5 @@ export const Coding = () => {
         <Workspace />
     )
 }
+
+export default Coding;

@@ -1,39 +1,51 @@
-// @ts-nocheck
-import { fork, IPty } from 'node-pty';
+import { spawn, IPty } from 'node-pty';
 
 const SHELL = "bash";
 
 export class TerminalManager {
-    private sessions: { [id: string]: {terminal: IPty, workspaceId: string;} } = {};
+    private sessions: { [id: string]: { terminal: IPty, workspaceId: string } } = {};
 
     constructor() {
         this.sessions = {};
     }
     
-    createPty(id: string, workspaceId: string, onData: (data: string, id: number) => void) {
-        let term = fork(SHELL, [], {
+    createPty(id: string, workspaceId: string, onData: (data: string, id: number) => void): IPty {
+        let term = spawn(SHELL, [], {
             cols: 100,
             name: 'xterm',
             cwd: `./workspace`
         });
     
-        term.on('data', (data: string) => onData(data, term.pid));
+        term.onData((data: string) => onData(data, term.pid));
+        
         this.sessions[id] = {
             terminal: term,
             workspaceId
         };
-        term.on('exit', () => {
-            delete this.sessions[term.pid];
+        
+        term.onExit(() => {
+            delete this.sessions[id];
         });
+        
+        console.log(`Created terminal session ${id} for workspace ${workspaceId}`);
         return term;
     }
 
-    write(terminalId: string, data: string) {
-        this.sessions[terminalId]?.terminal.write(data);
+    write(terminalId: string, data: string): void {
+        const session = this.sessions[terminalId];
+        if (session) {
+            session.terminal.write(data);
+        } else {
+            console.warn(`Terminal session ${terminalId} not found`);
+        }
     }
 
-    clear(terminalId: string) {
-        this.sessions[terminalId].terminal.kill();
-        delete this.sessions[terminalId];
+    clear(terminalId: string): void {
+        const session = this.sessions[terminalId];
+        if (session) {
+            session.terminal.kill();
+            delete this.sessions[terminalId];
+            console.log(`Cleared terminal session ${terminalId}`);
+        }
     }
 }
