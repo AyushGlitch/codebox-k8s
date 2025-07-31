@@ -6,7 +6,6 @@ import SharedMonaco from './SharedMonaco';
 import FileManager from './FileManager';
 import UserPresence from './UserPresence';
 import { TerminalComp } from './Terminal';
-import { deduplicateFiles } from '../utils/deduplicate';
 
 export default function Workspace() {
   const { roomId } = useParams<{ roomId: string }>();
@@ -14,10 +13,6 @@ export default function Workspace() {
   const { doc, provider, isConnected } = useYWorkspace(workspaceId);
   const socket = useSocket(workspaceId);
   const [activeFileId, setActiveFileId] = useState('index.ts');
-
-  const handleCleanupDuplicates = () => {
-    deduplicateFiles(doc);
-  };
 
   if (!isConnected) {
     return (
@@ -34,15 +29,8 @@ export default function Workspace() {
 
   return (
     <div className="h-screen flex flex-col">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between p-2">
         <UserPresence provider={provider} />
-        <button
-          onClick={handleCleanupDuplicates}
-          className="px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700 mr-2"
-          title="Remove duplicate files"
-        >
-          Clean Duplicates
-        </button>
       </div>
       
       <div className="flex-1 flex">
